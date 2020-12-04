@@ -3,7 +3,9 @@
    License: none (public domain)
 */
 
-html,
+html {
+  scroll-behavior: smooth;
+}
 body,
 div,
 span,
