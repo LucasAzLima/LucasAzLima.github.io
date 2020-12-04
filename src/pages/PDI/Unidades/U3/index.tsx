@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react';
-import Leftboard from 'pages/PDI/LeftBoard';
+import Leftboard from 'components/LeftBoard';
 
 interface U3 {
   hidden?: boolean;
@@ -9,11 +9,23 @@ interface U3 {
 
 const U3: React.FC<U3> = observer(({ hidden }) => {
   return (
-    <Box style={{ display: 'flex', flexDirection: 'row' }} hidden={hidden}>
-      <Box style={{ backgroundColor: 'purple' }}>
-        <Typography>Unidade 1</Typography>
-      </Box>
-      <Leftboard options={['teste1', 'teste2', 'teste3', 'teste4']} />
+    <Box hidden={hidden}>
+      <Grid container spacing={2}>
+        <Grid item xs={10}>
+          <Typography>Unidade 3</Typography>
+          <Typography variant="subtitle2">Parte ainda em construção</Typography>
+        </Grid>
+        <Grid item xs={2}>
+          <Leftboard
+            options={[
+              'capítulo 3.1',
+              'capítulo 3.2',
+              'capítulo 3.3',
+              'capítulo 3.4',
+            ]}
+          />
+        </Grid>
+      </Grid>
     </Box>
   );
 });

@@ -18,9 +18,7 @@ import { selectUnidade } from 'state/PDI';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     box: {
-      display: 'flex',
-      flexDirection: 'row',
-      padding: 20,
+      padding: 40,
     },
     formControl: {
       margin: theme.spacing(1),
@@ -31,8 +29,8 @@ const useStyles = makeStyles((theme: Theme) =>
     select: {
       backgroundColor: 'white',
     },
-    teste: {
-      overflowX: 'hidden',
+    over: {
+      // overflowX: 'hidden',
     },
   })
 );
@@ -45,9 +43,9 @@ const PDI = observer(() => {
     selectUnidade.setcurrentUnit(event.target.value as number);
   };
   return (
-    <Box maxWidth="100vw" maxHeight="100vh" className={classes.teste}>
+    <Box maxWidth="100vw" maxHeight="100vh" className={classes.over}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={11}>
           <Navbar title="Processamento Digital de Imagens">
             <FormControl className={classes.formControl}>
               <Typography
@@ -70,12 +68,9 @@ const PDI = observer(() => {
             </FormControl>
           </Navbar>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} className={classes.box}>
           <Unidades />
         </Grid>
-        {/* <Grid item xs={2}>
-          <Leftboard options={['teste1', 'teste2', 'teste3', 'teste4']} />
-        </Grid> */}
       </Grid>
     </Box>
   );

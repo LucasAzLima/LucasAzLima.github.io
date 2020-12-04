@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react';
-import Leftboard from 'pages/PDI/LeftBoard';
+import Leftboard from 'components/LeftBoard';
 
 interface U1 {
   hidden?: boolean;
@@ -9,23 +9,23 @@ interface U1 {
 
 const U1: React.FC<U1> = observer(({ hidden }) => {
   return (
-    <Box style={{ display: 'flex', flexDirection: 'row' }} hidden={hidden}>
-      <Box width="100%" style={{ backgroundColor: 'grey' }}>
-        <Typography>Unidade 1</Typography>
-        <div id="teste1" style={{ marginBottom: 200 }}>
-          <p>teste1</p>
-        </div>
-        <div id="teste2" style={{ marginBottom: 200 }}>
-          <p>teste2</p>
-        </div>
-        <div id="teste3" style={{ marginBottom: 200 }}>
-          <p>teste3</p>
-        </div>
-        <div id="teste4" style={{ marginBottom: 200 }}>
-          <p>teste4</p>
-        </div>
-      </Box>{' '}
-      <Leftboard options={['teste1', 'teste2', 'teste3', 'teste4']} />
+    <Box hidden={hidden}>
+      <Grid container spacing={2}>
+        <Grid item xs={10}>
+          <Typography>Unidade 1</Typography>
+          <Typography variant="subtitle2">Parte ainda em construção</Typography>
+        </Grid>
+        <Grid item xs={2}>
+          <Leftboard
+            options={[
+              'capítulo 1.1',
+              'capítulo 1.2',
+              'capítulo 1.3',
+              'capítulo 1.4',
+            ]}
+          />
+        </Grid>
+      </Grid>
     </Box>
   );
 });
