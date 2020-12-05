@@ -8,7 +8,7 @@ interface LB {
 }
 const useStyles = makeStyles(() =>
   createStyles({
-    devider: {
+    divider: {
       backgroundColor: '#747373',
       marginRight: 10,
     },
@@ -54,7 +54,7 @@ const Leftboard: React.FC<LB> = observer(({ options }) => {
       <Divider
         orientation="vertical"
         flexItem={true}
-        className={classes.devider}
+        className={classes.divider}
       />
       <Box display="flex" flexDirection="column">
         {options?.map((option, id) => (
