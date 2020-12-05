@@ -35,7 +35,7 @@ const Navbar: React.FC<NB> = observer(({ children, title }) => {
   const classes = useStyles();
 
   return (
-    <Box width="100%" maxHeight="10vh" className={classes.box}>
+    <Box width="100%" minHeight="10vh" className={classes.box}>
       <Typography variant="body2" className={classes.title}>
         {title}
       </Typography>
