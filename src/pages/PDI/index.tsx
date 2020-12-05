@@ -43,7 +43,13 @@ const PDI = observer(() => {
     selectUnidade.setcurrentUnit(event.target.value as number);
   };
   return (
-    <Box maxWidth="100vw" maxHeight="100vh" className={classes.over}>
+    <Box
+      maxWidth="100vw"
+      maxHeight="100vh"
+      minWidth="800px"
+      minHeight="400px"
+      className={classes.over}
+    >
       <Grid container spacing={3}>
         <Grid item xs={11}>
           <Navbar title="Processamento Digital de Imagens">

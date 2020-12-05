@@ -2,8 +2,8 @@ import React from 'react';
 import { Box, Divider, Grid, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-
-import Navigation from 'state/NavigationState';
+import { useHistory } from 'react-router-dom';
+// import Navigation from 'state/NavigationState';
 import Navbar from 'components/Layout/Navbar';
 import Descripiton from './Description';
 import Perfil from './Perfil';
@@ -40,9 +40,16 @@ const Disciplinas: Rotas[] = [
 
 const PDI = observer(() => {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
-    <Box width="100vw" height="100vh" className={classes.over}>
+    <Box
+      maxWidth="100vw"
+      maxHeight="100vh"
+      minWidth="1000px"
+      minHeight="400px"
+      className={classes.over}
+    >
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Navbar title="Lucas de Azevedo Lima" />
@@ -74,7 +81,7 @@ const PDI = observer(() => {
                 <Typography
                   key={id}
                   className={classes.item}
-                  onClick={() => Navigation.goTo(item.route)}
+                  onClick={() => history.push(item.route)}
                 >
                   {item.nome}
                 </Typography>

@@ -44,7 +44,7 @@ const useStyles = makeStyles(() =>
 const Perfil = observer(() => {
   const classes = useStyles();
   return (
-    <Box marginLeft="10px">
+    <Box marginLeft="10px" width="auto" height="auto">
       <Avatar src={perfil} alt="Lucas_Lima" className={classes.avatar} />
       <Typography variant="h5" className={classes.item}>
         Lucas de Azevedo Lima

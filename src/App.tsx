@@ -14,7 +14,7 @@ const App = observer(() => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/pdi" component={PDI} />
+          <Route exact path="/pdi" component={PDI} />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
