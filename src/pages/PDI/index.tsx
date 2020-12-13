@@ -56,7 +56,7 @@ const PDI = observer(() => {
             <FormControl className={classes.formControl}>
               <Typography
                 variant="body2"
-                style={{ color: 'white', marginRight: 5 }}
+                style={{ color: 'white', marginRight: 5, marginBottom: 0 }}
               >
                 Unidade
               </Typography>
