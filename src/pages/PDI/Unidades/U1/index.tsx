@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Divider, Grid, Typography } from '@material-ui/core';
+import { Box, Divider, Grid, Link, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react';
 import Leftboard from 'components/LeftBoard';
 import Highlight from 'react-highlight';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 import bebe from 'assets/pdi/U1/bebe.png';
 import regions from 'assets/pdi/U1/regions.png';
@@ -17,7 +18,23 @@ interface U1 {
   hidden?: boolean;
 }
 
+const useStyles = makeStyles(() =>
+  createStyles({
+    link: {
+      color: '#0E4B82',
+      marginLeft: 5,
+      '&:hover': {
+        cursor: 'pointer',
+        textDecoration: 'none',
+        alignItens: 'center',
+      },
+    },
+  })
+);
+
 const U1: React.FC<U1> = observer(({ hidden }) => {
+  const classes = useStyles();
+
   return (
     <Box hidden={hidden}>
       <Grid container spacing={2}>
@@ -90,7 +107,7 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
             flexDirection="column"
             textAlign="center"
           >
-            <img style={{ margin: '0 auto' }} src={bebe} />
+            <img alt="" style={{ margin: '0 auto' }} src={bebe} />
             <Typography variant="caption">Figura 1: Foto original</Typography>
           </Box>
           <Box
@@ -99,11 +116,21 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
             flexDirection="column"
             textAlign="center"
           >
-            <img style={{ margin: '0 auto' }} src={regions} />
+            <img alt="" style={{ margin: '0 auto' }} src={regions} />
             <Typography variant="caption">
               Figura 2: Foto após a execução
             </Typography>
           </Box>
+          <Typography variant="body2">
+            Arquivo pode ser encontrado
+            <Link
+              href="https://github.com/LucasAzLima/operncv-python/blob/main/regions.py"
+              target="_blank"
+              className={classes.link}
+            >
+              aqui
+            </Link>
+          </Typography>
           <Divider style={{ marginTop: 25, marginBottom: 25 }} />
           <Typography id="Troca de Regiões" variant="h5">
             Troca de Regiões
@@ -149,11 +176,21 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
             flexDirection="column"
             textAlign="center"
           >
-            <img style={{ margin: '0 auto' }} src={trocaregioes} />
+            <img alt="" style={{ margin: '0 auto' }} src={trocaregioes} />
             <Typography variant="caption">
               Figura 3: Regiões trocadas
             </Typography>
           </Box>
+          <Typography variant="body2">
+            Arquivo pode ser encontrado
+            <Link
+              href="https://github.com/LucasAzLima/operncv-python/blob/main/trocaregioes.py"
+              target="_blank"
+              className={classes.link}
+            >
+              aqui
+            </Link>
+          </Typography>
           <Divider style={{ marginTop: 25, marginBottom: 25 }} />
           <Typography id="Labeling" variant="h5">
             Labeling
@@ -190,7 +227,7 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
             flexDirection="column"
             textAlign="center"
           >
-            <img style={{ margin: '0 auto' }} src={bolhas} />
+            <img alt="" style={{ margin: '0 auto' }} src={bolhas} />
             <Typography variant="caption">Figura 4: Foto original</Typography>
           </Box>
           <Highlight language="python">
@@ -218,7 +255,11 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
             flexDirection="column"
             textAlign="center"
           >
-            <img style={{ margin: '0 auto', marginTop: 25 }} src={labeling0} />
+            <img
+              alt=""
+              style={{ margin: '0 auto', marginTop: 25 }}
+              src={labeling0}
+            />
             <Typography variant="caption">
               Figura 5: Foto sem bolhas nas bordas
             </Typography>
@@ -243,7 +284,11 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
             flexDirection="column"
             textAlign="center"
           >
-            <img style={{ margin: '0 auto', marginTop: 25 }} src={labeling1} />
+            <img
+              alt=""
+              style={{ margin: '0 auto', marginTop: 25 }}
+              src={labeling1}
+            />
             <Typography variant="caption">
               Figura 6: Foto após o labeling
             </Typography>
@@ -265,6 +310,16 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
           <Typography variant="body2" style={{ marginTop: 25 }}>
             Ao final ambos os contadores são mostrados ao usuário, mostrando o
             total de bolhas, o numero de bolhas com e sem furos.
+          </Typography>
+          <Typography variant="body2">
+            Arquivo pode ser encontrado
+            <Link
+              href="https://github.com/LucasAzLima/operncv-python/blob/main/labeling.py"
+              target="_blank"
+              className={classes.link}
+            >
+              aqui
+            </Link>
           </Typography>
           <Divider style={{ marginTop: 25, marginBottom: 25 }} />
           <Typography id="Equalização de Histograma" variant="h5">
@@ -310,6 +365,7 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
             textAlign="center"
           >
             <img
+              alt=""
               style={{ margin: '0 auto', marginTop: 25 }}
               src={equalize}
               width="50%"
@@ -319,6 +375,16 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
               equalizada
             </Typography>
           </Box>
+          <Typography variant="body2">
+            Arquivo pode ser encontrado
+            <Link
+              href="https://github.com/LucasAzLima/operncv-python/blob/main/equalize.py"
+              target="_blank"
+              className={classes.link}
+            >
+              aqui
+            </Link>
+          </Typography>
           <Divider style={{ marginTop: 25, marginBottom: 25 }} />
 
           <Typography id="Detecção de Movimento" variant="h5">
@@ -373,6 +439,7 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
             textAlign="center"
           >
             <img
+              alt=""
               style={{ margin: '0 auto', marginTop: 25 }}
               src={motion}
               width="50%"
@@ -381,6 +448,17 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
               Figura 8: Resultado da detecção
             </Typography>
           </Box>
+          <Typography variant="body2">
+            Arquivo pode ser encontrado
+            <Link
+              href="https://github.com/LucasAzLima/operncv-python/blob/main/motiondetector.py"
+              target="_blank"
+              className={classes.link}
+            >
+              aqui
+            </Link>
+          </Typography>
+          <Divider style={{ marginTop: 25, marginBottom: 25 }} />
         </Grid>
         <Grid item xs={2}>
           <Leftboard

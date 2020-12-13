@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Divider, Grid, Typography } from '@material-ui/core';
+import { Box, Divider, Grid, Link, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react';
 import Highlight from 'react-highlight';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 import Leftboard from 'components/LeftBoard';
 import lennapoint from 'assets/pdi/U2/lennapoint.png';
@@ -11,7 +12,23 @@ interface U2 {
   hidden?: boolean;
 }
 
+const useStyles = makeStyles(() =>
+  createStyles({
+    link: {
+      color: '#0E4B82',
+      marginLeft: 5,
+      '&:hover': {
+        cursor: 'pointer',
+        textDecoration: 'none',
+        alignItens: 'center',
+      },
+    },
+  })
+);
+
 const U2: React.FC<U2> = observer(({ hidden }) => {
+  const classes = useStyles();
+
   return (
     <Box hidden={hidden}>
       <Grid container spacing={2}>
@@ -60,13 +77,22 @@ const U2: React.FC<U2> = observer(({ hidden }) => {
             flexDirection="column"
             textAlign="center"
           >
-            <img style={{ margin: '0 auto' }} src={lennapoint} />
+            <img alt="" style={{ margin: '0 auto' }} src={lennapoint} />
             <Typography variant="caption">
               Figura 1: comparação imagem original(esquerda) e a com a tecnica
               pontilhista
             </Typography>
           </Box>
-
+          <Typography variant="body2">
+            Arquivo pode ser encontrado
+            <Link
+              href="https://github.com/LucasAzLima/operncv-python/blob/main/cannypoints.py"
+              target="_blank"
+              className={classes.link}
+            >
+              aqui
+            </Link>
+          </Typography>
           <Divider style={{ marginTop: 25, marginBottom: 25 }} />
           <Typography id="Quantização vetorial com K-means" variant="h5">
             Quantização vetorial com K-means
@@ -118,7 +144,7 @@ const U2: React.FC<U2> = observer(({ hidden }) => {
             flexDirection="column"
             textAlign="center"
           >
-            <img style={{ margin: '0 auto' }} src={kmeans} />
+            <img alt="" style={{ margin: '0 auto' }} src={kmeans} />
             <Typography variant="caption">
               Figura 2: Imagem gerada agrupando as 10 umagens geradas pelo
               algoritimo
@@ -133,6 +159,17 @@ const U2: React.FC<U2> = observer(({ hidden }) => {
             por haver somente uma, o algoritimo não tem como fazer tal
             comparação.
           </Typography>
+          <Typography variant="body2">
+            Arquivo pode ser encontrado
+            <Link
+              href="https://github.com/LucasAzLima/operncv-python/blob/main/kmeans.py"
+              target="_blank"
+              className={classes.link}
+            >
+              aqui
+            </Link>
+          </Typography>
+          <Divider style={{ marginTop: 25, marginBottom: 25 }} />
         </Grid>
         <Grid item xs={2}>
           <Leftboard
