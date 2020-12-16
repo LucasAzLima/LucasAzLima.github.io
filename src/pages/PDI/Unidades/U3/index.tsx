@@ -12,7 +12,7 @@ const U3: React.FC<U3> = observer(({ hidden }) => {
     <Box hidden={hidden}>
       <Grid container spacing={2}>
         <Grid item xs={10}>
-          <Typography>Unidade 3</Typography>
+          <Typography>Unidade 3 - Atividades práticas</Typography>
           <Typography variant="subtitle2">Parte ainda em construção</Typography>
         </Grid>
         <Grid item xs={2}>

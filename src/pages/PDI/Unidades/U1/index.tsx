@@ -13,6 +13,11 @@ import labeling0 from 'assets/pdi/U1/labeling0.png';
 import labeling1 from 'assets/pdi/U1/labeling1.png';
 import equalize from 'assets/pdi/U1/equalize.png';
 import motion from 'assets/pdi/U1/motion.gif';
+import c5l from 'assets/pdi/U1/c5l.png';
+import c5lg from 'assets/pdi/U1/c5lg.png';
+import c5o from 'assets/pdi/U1/c5o.png';
+import tsimg from 'assets/pdi/U1/tsimg.gif';
+import tsvideo from 'assets/pdi/U1/tsvideo.gif';
 
 interface U1 {
   hidden?: boolean;
@@ -39,7 +44,7 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
     <Box hidden={hidden}>
       <Grid container spacing={2}>
         <Grid item xs={10}>
-          <Typography>Unidade 1 - Exercícios</Typography>
+          <Typography>Unidade 1 - Atividades práticas</Typography>
           <Divider style={{ marginTop: 25, marginBottom: 25 }} />
           <Typography id="Região Negativa" variant="h5">
             Região negativa
@@ -386,7 +391,6 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
             </Link>
           </Typography>
           <Divider style={{ marginTop: 25, marginBottom: 25 }} />
-
           <Typography id="Detecção de Movimento" variant="h5">
             Detecção de Movimento
           </Typography>
@@ -452,6 +456,218 @@ const U1: React.FC<U1> = observer(({ hidden }) => {
             Arquivo pode ser encontrado
             <Link
               href="https://github.com/LucasAzLima/operncv-python/blob/main/motiondetector.py"
+              target="_blank"
+              className={classes.link}
+            >
+              aqui
+            </Link>
+          </Typography>
+          <Divider style={{ marginTop: 25, marginBottom: 25 }} />
+          <Typography id="Filtro Espacial" variant="h5">
+            Filtro Espacial
+          </Typography>
+          <Typography variant="body2">
+            Neste exercício foi proposto um programa deverá calcular o
+            laplaciano do gaussiano das imagens fornecidas/capturadas. Foi
+            pedido também que comparasse o resultado desse filtro com a simples
+            aplicação do filtro laplaciano.
+          </Typography>
+          <Typography variant="body2">
+            Com um exemplo já fornecido, a princípio deveria ser adicionado um
+            novo filtro, como pode ver na imagem abaixo, na imagem é aplicado 2
+            filtros para gerar o efeito desse novo filtro, aplicando um filtro
+            gaussiano e logo após no resultado é aplicado um filtro laplaciano:
+          </Typography>
+          <Highlight language="python">
+            {`
+    if laplaGauss:
+    img = cv2.filter2D(img, -1, gauss)
+    img = cv2.filter2D(img, -1, laplacian)
+    cv2.imshow("Video", img)`}
+          </Highlight>
+          <Box
+            width="100%"
+            display="flex"
+            flexDirection="column"
+            textAlign="center"
+          >
+            <img
+              alt=""
+              style={{ margin: '0 auto', marginTop: 25 }}
+              src={c5o}
+              width="50%"
+            />
+            <Typography variant="caption">Figura 9: Imagem original</Typography>
+          </Box>
+          <Box
+            width="100%"
+            display="flex"
+            flexDirection="column"
+            textAlign="center"
+          >
+            <img
+              alt=""
+              style={{ margin: '0 auto', marginTop: 25 }}
+              src={c5l}
+              width="50%"
+            />
+            <Typography variant="caption">
+              Figura 10: Imagem com filtro laplaciano
+            </Typography>
+          </Box>
+          <Box
+            width="100%"
+            display="flex"
+            flexDirection="column"
+            textAlign="center"
+          >
+            <img
+              alt=""
+              style={{ margin: '0 auto', marginTop: 25 }}
+              src={c5lg}
+              width="50%"
+            />
+            <Typography variant="caption">
+              Figura 11: Imagem com filtro laplaciano-gaussiano
+            </Typography>
+          </Box>
+          <Typography variant="body2">
+            Com a aplicação dos dois filtros percebe-se uma redução no encontro
+            de falsas arestas, o que aparenta uma resultado mais "limpo", devido
+            ao filtro gaussiano que borra a imagem.
+          </Typography>
+          <Typography variant="body2">
+            Arquivo pode ser encontrado
+            <Link
+              href="https://github.com/LucasAzLima/operncv-python/blob/main/laplgauss.py"
+              target="_blank"
+              className={classes.link}
+            >
+              aqui
+            </Link>
+          </Typography>
+          <Divider style={{ marginTop: 25, marginBottom: 25 }} />
+          <Typography id="Tilt Shift em Imagens" variant="h5">
+            Tilt Shift em Imagens
+          </Typography>
+          <Typography variant="body2">
+            Nesta seção será demonstrado o desenvolvimento de um programa que
+            produz o efeito de tilt-shift. Para esta atividade deverão ser
+            feitos três ajustes na interface, sendo eles: um ajuste para regular
+            a altura da região central que entrará em foco, um ajuste para
+            regular a força de decaimento da região borrada e, por ultimo, um
+            ajuste para regular a posição vertical do centro da região que
+            entrará em foco. Por fim, ao fim da execução, ao se apertar a tecla
+            'Q', a imagem produzida será salva em arquivo, chamado
+            'ts-image.png'.
+          </Typography>
+          <Typography variant="body2">
+            A promeira etapa do código é destinada à criação da janela de
+            exibição e dos sliders, que são resposáveis pelos ajustes na imagem,
+            como mostrado no trecho de código abaixo.
+          </Typography>
+          <Highlight language="python">
+            {`
+  def count(x):
+  x = x+1
+  cv2.namedWindow('tiltshift')
+  cv2.createTrackbar('Alfa', 'tiltshift', 0, 100, count)
+  cv2.createTrackbar('Center', 'tiltshift', 0, 100, count)
+  cv2.createTrackbar('Height', 'tiltshift', 0, 100, count)`}
+          </Highlight>
+          <Typography variant="body2">
+            Posteriormente, os slides criados foram inseridos na janela da
+            interface, e seus valores, escolhidos pelo usuário, são aplicados em
+            uma imagem, que no código é denominada blended. A partir dos ajustes
+            setados pelo usuário, é possível calcular os pontos superior
+            esquerdo e inferior direito, sendo assim possível a construção da
+            janela. Como dito acima, ao ser precionada a tecla 'Q', a imagem
+            final é salva. O trecho de código abaixo demosntra essa explicação.
+          </Typography>
+          <Highlight language="python">
+            {`
+  while True:
+    alfaS = cv2.getTrackbarPos('Alfa', 'tiltshift')
+    centerS = cv2.getTrackbarPos('Center', 'tiltshift')
+    heightS = cv2.getTrackbarPos('Height', 'tiltshift')
+
+    p1 = (max(0, int((centerS-heightS/2.0)/100.0*height)), 0)
+    p2 = (min(height-1, int((centerS+heightS/2.0)/100.0*height)), width-1)
+
+    imgTop = bg.copy()
+    imgTop[p1[0]:p2[0], p1[1]:p2[1], :] = img.copy()[p1[0]:p2[0],
+                                                      p1[1]:p2[1], :]
+    blended = cv2.addWeighted(bg, float(
+        alfaS/100), imgTop, 1-float(alfaS/100), 0)
+
+    cv2.imshow('tiltshift', blended)
+    cv2.imwrite('ts-image.png', blended)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+`}
+          </Highlight>
+          <Typography variant="body2">
+            O vídeo abaixo é uma demonstração da execução desta aplicação, e
+            logo abaixo, a imagem que foi salva.
+          </Typography>
+          <Box
+            width="100%"
+            display="flex"
+            flexDirection="column"
+            textAlign="center"
+          >
+            <img
+              alt=""
+              style={{ margin: '0 auto', marginTop: 25 }}
+              src={tsimg}
+              width="50%"
+            />
+            <Typography variant="caption">
+              Figura 12: Tilt Shift Image
+            </Typography>
+          </Box>
+          <Typography variant="body2">
+            Arquivo pode ser encontrado
+            <Link
+              href="https://github.com/LucasAzLima/operncv-python/blob/main/tilt-shift-image.py"
+              target="_blank"
+              className={classes.link}
+            >
+              aqui
+            </Link>
+          </Typography>
+          <Divider style={{ marginTop: 25, marginBottom: 25 }} />
+          <Typography id="Tilt Shift em Vídeos" variant="h5">
+            Tilt Shift em Vídeos
+          </Typography>
+          <Typography variant="body2">
+            Neste útimo tópico desta primeira unidade, foi solicitado uma versão
+            da aplicação anterior para vídeos. Em comparação à aplicação com
+            imagens, esta tem poucas mudanças: o programa recebe apenas uma
+            imagem, sendo esta a de background. O que seria a outra imagem,
+            agora é um vídeo capturado pela câmera principal do sistema. Todo o
+            restante da aplicação permanece o mesmo mostrado anteriormente.
+          </Typography>
+          <Box
+            width="100%"
+            display="flex"
+            flexDirection="column"
+            textAlign="center"
+          >
+            <img
+              alt=""
+              style={{ margin: '0 auto', marginTop: 25 }}
+              src={tsvideo}
+              width="50%"
+            />
+            <Typography variant="caption">
+              Figura 13: Tilt Shift video
+            </Typography>
+          </Box>
+          <Typography variant="body2">
+            Arquivo pode ser encontrado
+            <Link
+              href="https://github.com/LucasAzLima/operncv-python/blob/main/tilt-shift-video.py"
               target="_blank"
               className={classes.link}
             >

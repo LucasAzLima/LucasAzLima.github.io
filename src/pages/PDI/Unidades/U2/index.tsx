@@ -33,7 +33,7 @@ const U2: React.FC<U2> = observer(({ hidden }) => {
     <Box hidden={hidden}>
       <Grid container spacing={2}>
         <Grid item xs={10}>
-          <Typography>Unidade 2</Typography>
+          <Typography>Unidade 2 - Atividades práticas</Typography>
           <Divider style={{ marginTop: 25, marginBottom: 25 }} />
           <Typography
             id="Detecção de bordas com o algoritmo de Canny"
