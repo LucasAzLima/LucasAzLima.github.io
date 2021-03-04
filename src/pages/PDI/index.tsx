@@ -70,7 +70,6 @@ const PDI = observer(() => {
                 >
                   <MenuItem value={0}>1</MenuItem>
                   <MenuItem value={1}>2</MenuItem>
-                  <MenuItem value={2}>3</MenuItem>
                 </Select>
               </FormControl>
             </Box>
