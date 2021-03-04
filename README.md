@@ -1,3 +1,5 @@
+Acesse https://lucaslima-site.vercel.app/ para ver seu funcionamento, ainda está no seu início.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
