@@ -72,7 +72,6 @@ export const theme = createMuiTheme({
       fontFamily: 'Roboto',
       fontWeight: 'normal',
       fontSize: 16,
-      marginBottom: 25,
     },
     caption: {
       fontFamily: 'Roboto',

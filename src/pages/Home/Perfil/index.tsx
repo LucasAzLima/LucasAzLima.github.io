@@ -6,6 +6,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { MdDeveloperMode } from 'react-icons/md';
 import perfil from 'assets/perfil.png';
+
 const useStyles = makeStyles(() =>
   createStyles({
     avatar: {
@@ -17,6 +18,12 @@ const useStyles = makeStyles(() =>
       marginBottom: 20,
     },
     item: {
+      marginBottom: 10,
+      color: 'black',
+      alignItems: 'center',
+    },
+    itemOptions: {
+      display: 'flex',
       marginBottom: 10,
       color: 'black',
       alignItems: 'center',
@@ -58,7 +65,7 @@ const Perfil = observer(() => {
           Desenvolvedor frontend web/mobile
         </Typography>
       </Box>
-      <Box className={classes.item}>
+      <Box className={classes.itemOptions}>
         <FaGithub />
         <Link
           className={classes.link}
@@ -68,7 +75,7 @@ const Perfil = observer(() => {
           Github
         </Link>
       </Box>
-      <Box className={classes.item}>
+      <Box className={classes.itemOptions}>
         <FaLinkedin color="#0073b1" />
         <Link
           className={classes.link}
@@ -78,7 +85,7 @@ const Perfil = observer(() => {
           Linkedin
         </Link>
       </Box>
-      <Box className={classes.item2}>
+      <Box className={classes.itemOptions}>
         <HiOutlineMail />
         <Typography variant="body2" className={classes.item3}>
           lucas.a.lima13@outlook.com
